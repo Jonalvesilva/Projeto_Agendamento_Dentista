@@ -31,10 +31,11 @@ export const formatarData = (data: Date) => {
     "Dez",
   ];
 
-  const dia = data.getDate();
+  let dia = data.getDate().toString();
   const mes = meses[data.getMonth()];
   const diaSemana = diasDaSemana[data.getDay()];
 
-  // Retorna no formato "12 jan fri"
+  if (Number(dia) < 10) dia = `0${dia}`;
+
   return `${dia} ${mes} ${diaSemana}`;
 };

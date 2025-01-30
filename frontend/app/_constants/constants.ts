@@ -1,11 +1,6 @@
-export interface DataTest {
-  tipo: string;
-  data: Date;
-  nome: string;
-  id: string;
-}
+import { IData } from "../_interfaces/interfaces";
 
-export const dataTest: DataTest[] = [
+export const dataTest: IData[] = [
   { id: "1", tipo: "Consulta", data: new Date(), nome: "Jonathan Silva" },
   {
     id: "2",
