@@ -63,9 +63,9 @@ export default function AppSidebar({
     <Sidebar
       collapsible="icon"
       {...props}
-      className="overflow-y-auto overflow-x-hidden"
+      className="overflow-y-auto overflow-x-hidden z-20"
     >
-      <div className="flex flex-1 flex-col bg-gradient-to-tr from-orange-50 to-yellow-100/70 ">
+      <div className="flex flex-1 flex-col bg-gradient-to-tr from-orange-50 to-yellow-100 ">
         <SidebarHeader className="flex items-center justify-center my-4">
           <Image
             src="/profile.png"
@@ -73,6 +73,7 @@ export default function AppSidebar({
             width={120}
             height={30}
             className="rounded-full"
+            aria-label="Profile Picture"
           />
 
           {open && <p className="text-lg my-2">Matheus Silveira</p>}
@@ -80,7 +81,9 @@ export default function AppSidebar({
         <SidebarContent>
           <NavMain items={data.navMain} />
         </SidebarContent>
-        <SidebarFooter>teste </SidebarFooter>
+        <SidebarFooter className="text-center">
+          {open && <span>Logout</span>}
+        </SidebarFooter>
         <SidebarRail />
       </div>
     </Sidebar>
@@ -103,6 +106,7 @@ function NavMain({
 }) {
   const open = useContext(SidebarContext)!.open;
   const setOpen = useContext(SidebarContext)!.setOpen;
+  const setOpenMobile = useContext(SidebarContext)!.setOpenMobile;
 
   return (
     <SidebarGroup>
@@ -133,7 +137,10 @@ function NavMain({
                   {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild>
-                        <Link href={subItem.url}>
+                        <Link
+                          href={subItem.url}
+                          onClick={() => setOpenMobile(false)}
+                        >
                           <span>{subItem.title}</span>
                         </Link>
                       </SidebarMenuSubButton>
