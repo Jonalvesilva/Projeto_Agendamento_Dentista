@@ -10,15 +10,20 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/app/_components/shadcn/ui/button";
 import { Input } from "@/app/_components/shadcn/ui/input";
 import { Separator } from "@/app/_components/shadcn/ui/separator";
-import { Sheet, SheetContent } from "@/app/_components/shadcn/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+} from "@/app/_components/shadcn/ui/sheet";
 import { Skeleton } from "@/app/_components/shadcn/ui/skeleton";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/app/_components/shadcn/ui/tooltip";
-import { useMediaQuery } from "@uidotdev/usehooks";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -212,6 +217,9 @@ const Sidebar = React.forwardRef<
     if (isMobile) {
       return (
         <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+          <VisuallyHidden>
+            <SheetTitle>Menu</SheetTitle>
+          </VisuallyHidden>
           <SheetContent
             data-sidebar="sidebar"
             data-mobile="true"
