@@ -1,6 +1,6 @@
 import { Dialog, DialogTrigger } from "@/app/_components/shadcn/ui/dialog";
 import BadgeItems from "../BadgeItems";
-import { DataTest } from "@/app/constants/constants";
+import { DataTest } from "@/app/_constants/constants";
 import DialogDayItem from "../DialogDayItem";
 
 interface IMonthDayDialogProps {

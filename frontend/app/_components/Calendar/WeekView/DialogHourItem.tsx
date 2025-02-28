@@ -25,7 +25,7 @@ export default function DialogHourItem({ data, day, hour }: IWeekDataDialog) {
   );
 
   return (
-    <DialogContent className="w-[90vw] max-w-screen-md rounded-md" asChild>
+    <DialogContent className="w-[90vw] max-w-screen-md rounded-md">
       <DialogHeader>
         <DialogTitle className="text-start">
           {new Date(day).toLocaleDateString("en-gb")} - Eventos entre{" "}

@@ -4,7 +4,7 @@ export interface IData {
   tipo: string;
   data: Date;
   nome: string;
-  id: string;
+  id: Number;
 }
 
 export interface IDataBagdeItems {
