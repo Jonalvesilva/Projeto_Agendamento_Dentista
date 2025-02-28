@@ -1,26 +1,31 @@
-import { IData } from "../_interfaces/interfaces";
+export interface DataTest {
+  tipo: string;
+  data: Date;
+  nome: string;
+  id: number;
+}
 
-export const dataTest: IData[] = [
-  { id: "1", tipo: "Consulta", data: new Date(), nome: "Jonathan Silva" },
+export const dataTest: DataTest[] = [
+  { id: 1, tipo: "Consulta", data: new Date(), nome: "Jonathan Silva" },
   {
-    id: "2",
+    id: 2,
     tipo: "Exame",
     data: new Date(),
     nome: "Lina Oliveira",
   },
-  { id: "3", tipo: "Consulta", data: new Date(), nome: "Jonathan Silva" },
-  { id: "4", tipo: "Consulta", data: new Date(), nome: "Jonathan Silva" },
-  { id: "5", tipo: "Revisão", data: new Date(), nome: "Selton Miguel" },
-  { id: "6", tipo: "Revisão", data: new Date(), nome: "Selton Miguel" },
-  { id: "7", tipo: "Revisão", data: new Date(), nome: "Selton Miguel" },
+  { id: 3, tipo: "Consulta", data: new Date(), nome: "Jonathan Silva" },
+  { id: 4, tipo: "Consulta", data: new Date(), nome: "Jonathan Silva" },
+  { id: 5, tipo: "Revisão", data: new Date(), nome: "Selton Miguel" },
+  { id: 6, tipo: "Revisão", data: new Date(), nome: "Selton Miguel" },
+  { id: 7, tipo: "Revisão", data: new Date(), nome: "Selton Miguel" },
   {
-    id: "8",
+    id: 8,
     tipo: "Revisão",
     data: new Date("2025-01-26"),
     nome: "Selton Miguel",
   },
   {
-    id: "9",
+    id: 9,
     tipo: "Revisão",
     data: new Date("2025-01-26"),
     nome: "Selton Miguel",
