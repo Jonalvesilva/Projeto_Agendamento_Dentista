@@ -65,7 +65,7 @@ export default function Adicionar() {
               name="tipo"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>Tipo de Evento</FormLabel>
+                  <FormLabel>Evento</FormLabel>
                   <FormControl>
                     <Select onValueChange={field.onChange}>
                       <SelectTrigger className="focus:ring-0 focus-visible:ring-0">
@@ -88,7 +88,7 @@ export default function Adicionar() {
                 <FormItem className="w-full">
                   <FormLabel>Data</FormLabel>
                   <FormControl>
-                    <DatePicker onChange={field.onChange} />
+                    <DatePicker onChange={field.onChange} _date={field.value} />
                   </FormControl>
                 </FormItem>
               )}

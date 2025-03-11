@@ -2,15 +2,32 @@ import * as React from "react";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
+import { roundToNearestFiveMinutes } from "@/app/_functions/roundToNearestFiveMinutes";
+import dayjs from "dayjs";
+
 import { Stack } from "@mui/material";
 
-export default function MaterialDatePicker() {
+interface Props {
+  props: {
+    date: Date | undefined;
+    setDate: (date: Date) => void;
+    onChange: (...event: any[]) => void;
+  };
+}
+
+export default function MaterialDatePicker({ props }: Props) {
+  const handleDate = (date: Date | undefined) => {
+    if (date) {
+      props.onChange(date);
+      props.setDate(date);
+    }
+  };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={["DatePicker"]}>
+      <DemoContainer components={["MobileDateTimePicker"]}>
         <Stack sx={{ padding: 0, margin: 0 }}>
-          <DatePicker
+          <MobileDateTimePicker
             className="relative bottom-1"
             slotProps={{
               textField: {
@@ -34,6 +51,11 @@ export default function MaterialDatePicker() {
                 },
               },
             }}
+            ampm={false}
+            defaultValue={dayjs(roundToNearestFiveMinutes(props.date!))}
+            minutesStep={5}
+            onChange={(newDate) => handleDate(newDate?.toDate())}
+            format="DD/MM/YYYY HH:mm"
           />
         </Stack>
       </DemoContainer>

@@ -18,10 +18,11 @@ import { roundToNearestFiveMinutes } from "@/app/_functions/roundToNearestFiveMi
 
 interface Props {
   onChange: (...event: any[]) => void;
+  _date: Date;
 }
 
-export default function DatePicker({ onChange }: Props) {
-  const [date, setDate] = React.useState<Date>();
+export default function DatePicker({ _date, onChange }: Props) {
+  const [date, setDate] = React.useState<Date>(_date);
   const [isMobileHeight, setMobileHeight] = React.useState<boolean>(false);
 
   const handleDate = (date: Date | undefined) => {
@@ -47,7 +48,8 @@ export default function DatePicker({ onChange }: Props) {
     window.innerHeight < 700 ? setMobileHeight(true) : setMobileHeight(false);
   }, []);
 
-  if (isMobileHeight) return <MaterialDatePicker />;
+  if (isMobileHeight)
+    return <MaterialDatePicker props={{ date, setDate, onChange }} />;
 
   return (
     <Popover>
