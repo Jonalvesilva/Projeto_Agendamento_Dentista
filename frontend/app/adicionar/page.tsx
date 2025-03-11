@@ -19,14 +19,21 @@ import {
 } from "../_components/shadcn/ui/select";
 import { Input } from "../_components/shadcn/ui/input";
 import DatePicker from "./components/DatePicker";
+import { roundToNearestFiveMinutes } from "@/app/_functions/roundToNearestFiveMinutes";
 
 export default function Adicionar() {
   const form = useForm<IAdicionarSchema>({
     resolver: zodResolver(adicionarSchema),
-    defaultValues: { nome: "", tipo: "Consulta", data: new Date() },
+    defaultValues: {
+      nome: "",
+      tipo: "Consulta",
+      data: roundToNearestFiveMinutes(new Date()),
+    },
   });
 
-  const onSubmit = async () => {};
+  const onSubmit = async (data: IAdicionarSchema) => {
+    console.log(data);
+  };
 
   return (
     <section className="px-5 min-h-screen">
@@ -60,7 +67,7 @@ export default function Adicionar() {
                 <FormItem className="w-full">
                   <FormLabel>Tipo de Evento</FormLabel>
                   <FormControl>
-                    <Select>
+                    <Select onValueChange={field.onChange}>
                       <SelectTrigger className="focus:ring-0 focus-visible:ring-0">
                         <SelectValue placeholder="Consulta" />
                       </SelectTrigger>
@@ -81,7 +88,7 @@ export default function Adicionar() {
                 <FormItem className="w-full">
                   <FormLabel>Data</FormLabel>
                   <FormControl>
-                    <DatePicker />
+                    <DatePicker onChange={field.onChange} />
                   </FormControl>
                 </FormItem>
               )}
