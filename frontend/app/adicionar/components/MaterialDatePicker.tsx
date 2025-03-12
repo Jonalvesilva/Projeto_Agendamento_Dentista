@@ -44,6 +44,7 @@ export default function MaterialDatePicker({ props }: Props) {
                     overflow: "hidden",
                     margin: 0,
                     padding: 0,
+                    fontSize: "calc(0.7rem + .5vw)",
                   },
                   "& .MuiOutlinedInput-notchedOutline": {
                     borderColor: "#D1D5DB",
