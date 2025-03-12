@@ -58,6 +58,7 @@ export default function AppSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
   const open = useContext(SidebarContext)?.open;
+  const openMobile = useContext(SidebarContext)?.openMobile;
 
   return (
     <Sidebar
@@ -76,13 +77,15 @@ export default function AppSidebar({
             aria-label="Profile Picture"
           />
 
-          {open && <p className="text-lg my-2">Matheus Silveira</p>}
+          {(open || openMobile) && (
+            <p className="text-lg my-2">Matheus Silveira</p>
+          )}
         </SidebarHeader>
         <SidebarContent>
           <NavMain items={data.navMain} />
         </SidebarContent>
         <SidebarFooter className="text-center">
-          {open && <span>Logout</span>}
+          {(open || openMobile) && <span>Logout</span>}
         </SidebarFooter>
         <SidebarRail />
       </div>
